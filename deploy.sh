@@ -17,7 +17,21 @@ else
 	sudo chmod +x /usr/local/bin/docker-compose
 fi
 
+# update repository from github
+### warning: if there's changes in this bash file, please run git pull in semaphore commands first
+
+# If ssh key-pairs not set in github, this script can't help
+
+# if directory not exists, create one and setup git configurations
+if [ ! -d "~/semaphore-test"]; then
+	sudo mkdir semaphore-test
+	cd ~/semaphore-test && sudo git init && sudo git remote add origin git@github.com:chingtoe365/semaphore-test.git
+
+cd ~/semaphore-test && sudo git pull origin master
+
+# rebuild & run docker container 
 cd ~/semaphore-test && sudo docker-compose up -d --no-deps --build
+
 
 # ssh-keyscan -H -p 22 34.211.225.42 >> ~/.ssh/known_hosts
 # ssh ubuntu@34.211.225.42 "sudo git clone https://github.com/chingtoe365/semaphore-test.git"
