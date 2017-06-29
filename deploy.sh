@@ -26,6 +26,8 @@ fi
 if [ ! -d "~/semaphore-test"]; then
 	sudo mkdir semaphore-test
 	cd ~/semaphore-test && sudo git init && sudo git remote add origin git@github.com:chingtoe365/semaphore-test.git
+else
+fi
 
 cd ~/semaphore-test && sudo git pull origin master
 
