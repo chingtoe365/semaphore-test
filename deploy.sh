@@ -17,7 +17,7 @@ else
 	sudo chmod +x /usr/local/bin/docker-compose
 fi
 
-cd ~/semaphore-test && sudo docker-compose up -d
+cd ~/semaphore-test && sudo docker-compose up -d --no-deps --build
 
 # ssh-keyscan -H -p 22 34.211.225.42 >> ~/.ssh/known_hosts
 # ssh ubuntu@34.211.225.42 "sudo git clone https://github.com/chingtoe365/semaphore-test.git"
